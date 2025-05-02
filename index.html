@@ -17,6 +17,10 @@
             <p class="lead">使用 revanced 修改原 APK</p>
         </header>
 
+        <div id="browser-warning" class="alert alert-warning text-center" role="alert" style="display: none;">
+            <strong>提示：</strong>偵測到您可能正在使用應用程式內建瀏覽器 (例如 LINE、Facebook)。為了確保下載功能正常，請點擊右上角選單，選擇「使用預設瀏覽器開啟」。
+        </div>
+
         <main>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -108,6 +112,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script>
+        (function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // 檢查是否為常見的應用程式內建瀏覽器
+            // Line, Facebook, Instagram, WeChat, QQ, Weibo, Twitter, Android WebView (wv)
+            if (/Line|FBAN|FBAV|Instagram|MicroMessenger|QQ\/|Weibo|Twitter|wv\)/i.test(userAgent)) {
+                var warningDiv = document.getElementById('browser-warning');
+                if (warningDiv) {
+                    warningDiv.style.display = 'block';
+                }
+            }
+        })();
+    </script>
 
 </body>
 </html>
